@@ -1,0 +1,28 @@
+// Importing fonts
+@use "./fonts/fonts";
+
+// Default rules
+body {
+  font-family: "Europa", "Arial", sans-serif;
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+  display: inline-block;
+}
