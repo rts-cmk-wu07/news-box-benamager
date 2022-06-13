@@ -9,16 +9,19 @@ const Icon = (props) => {
   // Finding icon and returning
   const { iconName, size, color, justify, colStart } = props
 
-  // Checks if icon exists in libary (if not error icon gets displayed)
+  // Checks if icon exists in libary (if not error icon gets displayed in red)
   const iconExists = iconName in libary
 
+  // Creating icon from libaries, if it doesnt exist return error icon.
   const icon = createElement(
     libary[iconExists ? iconName : "IoIosCloseCircle"],
     {
       style: {
         fontSize: size,
         color: iconExists ? color : "red",
-        justifySelf: justify,
+        justifySelf: "justify",
+        boxSizing: "content-box",
+        padding: "10px",
         colStart: { colStart },
       },
     }

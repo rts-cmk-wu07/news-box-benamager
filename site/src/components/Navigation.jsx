@@ -1,25 +1,30 @@
 import { useContext } from "react"
+import { Link } from "react-router-dom"
 
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react"
 
-import Colors from "../contexts/colors"
+import Colors from "../contexts/colorsContext"
 import Icon from "./Icon"
 
 const Navigation = (props) => {
-  const { title, height, iconSize, iconLeft, iconRight } = props
+  const { title, height, iconSize, iconLeft, iconRight, linkLeft, linkRight } =
+    props
   const colors = useContext(Colors)
 
   const styles = {
     container: css`
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 50px 1fr 50px;
       align-items: center;
       border-bottom: 2px solid ${colors.secondary.fossil};
       height: ${height};
-      padding: 0 30px;
+      padding: 0 20px;
       font-weight: 700;
       color: ${colors.primary.drab};
+      & a {
+        text-align: center;
+      }
     `,
     header: css`
       font-size: 18px;
@@ -32,16 +37,25 @@ const Navigation = (props) => {
   return (
     <nav css={styles.container}>
       {iconLeft && (
-        <Icon
-          iconName={iconLeft}
-          size={iconSize}
-          justify="start"
-          colStart={1}
-        />
+        <Link to={linkLeft}>
+          <Icon
+            iconName={iconLeft}
+            size={iconSize}
+            justify="start"
+            colStart={1}
+          />
+        </Link>
       )}
-      <h1 css={styles.header}>{title}</h1>
+      <h3 css={styles.header}>{title}</h3>
       {iconRight && (
-        <Icon iconName={iconRight} size={iconSize} justify="end" colStart={3} />
+        <Link to={linkRight}>
+          <Icon
+            iconName={iconRight}
+            size={iconSize}
+            justify="end"
+            colStart={3}
+          />
+        </Link>
       )}
     </nav>
   )

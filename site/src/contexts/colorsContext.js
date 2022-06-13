@@ -1,7 +1,7 @@
 import { createContext } from "react"
 
 // Color scheme (static context)
-const Colors = createContext({
+const ColorsContext = createContext({
   primary: {
     sage: "#87BCBF",
     rust: "#D97D54",
@@ -18,6 +18,9 @@ const Colors = createContext({
     slate: "#6E8CA0",
     snow: "#FFFFFF",
   },
+  others: {
+    bcgSettings: "#ECEFF0",
+  },
 })
 
-export default Colors
+export default ColorsContext

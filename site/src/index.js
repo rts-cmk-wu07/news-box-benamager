@@ -4,9 +4,14 @@ import App from "./App"
 
 import "./index.scss"
 
+// Router moved to own file
+import Router from "./routes/Router"
+
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <App />
+    </Router>
   </React.StrictMode>
 )
