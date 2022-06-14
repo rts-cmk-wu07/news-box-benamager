@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom"
-import { useState, useContext } from "react"
+import { useState, useContext, useEffect } from "react"
 
 import Wrapper from "./templates/Wrapper"
 import Navigation from "./components/Navigation"
@@ -18,18 +18,49 @@ function App() {
 
   const [categoriesContext, setCategoriesContext] = useState([
     {
-      name: "arts",
-      checked: false,
+      name: "Automobiles",
+      checked: true,
     },
     {
-      name: "automobiles",
+      name: "Business",
+      checked: true,
+    },
+    {
+      name: "Health",
+      checked: true,
+    },
+    {
+      name: "Politics",
+      checked: true,
+    },
+    {
+      name: "Science",
+      checked: true,
+    },
+    {
+      name: "Sports",
+      checked: true,
+    },
+    {
+      name: "Technology",
+      checked: true,
+    },
+    {
+      name: "Travel",
       checked: true,
     },
   ])
 
+  // useEffect
+  // useEffect(() => {
+  //   console.log(categoriesContext)
+  // }, [categoriesContext])
+
   return (
     <NavigationContext.Provider value={{ navContext, setNavContext }}>
-      <CategoriesContext.Provider value={{ categoriesContext }}>
+      <CategoriesContext.Provider
+        value={{ categoriesContext, setCategoriesContext }}
+      >
         <Wrapper maxWidth="375px">
           <Navigation
             title={navContext.title}

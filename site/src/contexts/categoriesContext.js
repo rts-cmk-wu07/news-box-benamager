@@ -1,6 +1,6 @@
 import { createContext } from "react"
 
 // Color scheme (state held)
-const categoriesContext = createContext(null)
+const CategoriesContext = createContext(null)
 
-export default categoriesContext
+export default CategoriesContext

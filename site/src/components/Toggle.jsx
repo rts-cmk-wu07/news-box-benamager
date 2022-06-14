@@ -1,47 +1,54 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react"
 
-import { useContext } from "react"
-
-const Toggle = ({ checked }) => {
+const Toggle = ({ name, checked, handleClick }) => {
   const styles = {
-    containerDefault: css`
-      display: flex;
-      align-items: center;
-      background-color: #e0e5e5;
-      width: 55px;
-      height: 30px;
-      border-radius: 40px;
+    switch: css`
       cursor: pointer;
+      position: relative;
+      display: inline-block;
+      width: 55px;
+      border-radius: 30px;
+      height: 30px;
+      transition: 0.4s;
       & input {
-        display: none;
+        visibility: hidden;
       }
+      //filter: drop-shadow(5px 5px 10px #00000010);
+      -webkit-box-shadow: 5px 4px 5px 0px rgba(0, 0, 0, 0.15);
+      -moz-box-shadow: 5px 4px 5px 0px rgba(0, 0, 0, 0.15);
+      box-shadow: 5px 4px 5px 0px rgba(0, 0, 0, 0.15);
     `,
-    defaultSwitch: css`
+    slider: css`
+      position: absolute;
       background-color: #ffffff;
-      height: 27px;
-      width: 27px;
-      transition: all 1s;
+      top: 2px;
+      bottom: 2px;
+      left: 2px;
+      width: 26px;
       border-radius: 50%;
+      transition: 0.4s;
+      filter: drop-shadow(5px 5px 10px #00000030);
     `,
-    containerUnchecked: css`
-      background-color: #e0e5e5;
-      & .switch {
-        margin-left: 2px;
-      }
-    `,
-    containerChecked: css`
+    switchOn: css`
       background-color: #87bcbf;
-      & .switch {
-        margin-left: 26px;
+      left: 2px;
+      & .slider {
+        left: 27px;
       }
+    `,
+    switchOff: css`
+      background-color: #e0e5e5;
     `,
   }
 
   return (
-    <label class="switch">
-      <input type="checkbox" />
-      <span class="slider round"></span>
+    <label
+      onClick={handleClick}
+      css={[styles.switch, checked ? styles.switchOn : styles.switchOff]}
+    >
+      <input type="checkbox" defaultChecked={checked} />
+      <span className="slider" css={styles.slider}></span>
     </label>
   )
 }
