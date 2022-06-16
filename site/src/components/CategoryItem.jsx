@@ -22,8 +22,6 @@ const CategoryItem = ({ img, header, text }) => {
       align-items: center;
       gap: 21px;
       height: 100px;
-      border-bottom: 1px solid red;
-      border-top: 1px solid red;
       width: 100%;
       padding: 0 16px;
       letter-spacing: 0.02rem;

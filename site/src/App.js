@@ -20,34 +20,42 @@ function App() {
     {
       name: "Automobiles",
       checked: true,
+      isOpen: false,
     },
     {
       name: "Business",
-      checked: true,
+      checked: false,
+      isOpen: false,
     },
     {
       name: "Health",
       checked: true,
+      isOpen: false,
     },
     {
       name: "Politics",
       checked: true,
+      isOpen: false,
     },
     {
       name: "Science",
-      checked: true,
+      checked: false,
+      isOpen: false,
     },
     {
       name: "Sports",
       checked: true,
+      isOpen: false,
     },
     {
       name: "Technology",
       checked: true,
+      isOpen: false,
     },
     {
       name: "Travel",
       checked: true,
+      isOpen: false,
     },
   ])
 
