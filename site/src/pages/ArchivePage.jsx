@@ -1,5 +1,7 @@
 import useChangeNav from "../hooks/useChangeNav"
 
+import Searchbar from "../components/Searchbar"
+
 const ArchivePage = () => {
   useChangeNav({
     title: "Archive",
@@ -9,7 +11,7 @@ const ArchivePage = () => {
     linkRight: "/settings",
   })
 
-  return <h1>Archive</h1>
+  return <Searchbar />
 }
 
 export default ArchivePage

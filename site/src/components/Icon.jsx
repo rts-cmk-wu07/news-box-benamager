@@ -3,7 +3,8 @@ import { createElement } from "react"
 // Importing the icon galleries
 import * as FontAwesome from "react-icons/ai"
 import * as Ionicons from "react-icons/io"
-const libary = { ...FontAwesome, ...Ionicons }
+import * as FeatherIcons from "react-icons/fi"
+const libary = { ...FontAwesome, ...Ionicons, ...FeatherIcons }
 
 const Icon = (props) => {
   // Finding icon and returning

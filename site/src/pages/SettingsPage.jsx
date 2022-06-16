@@ -3,6 +3,8 @@ import Colors from "../contexts/colorsContext"
 
 import Toggle from "../components/Toggle"
 import CategoriesContext from "../contexts/categoriesContext"
+import VersionNumber from "../components/VersionNumber"
+import DarkModeToggle from "../components/DarkModeToggle"
 
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
 
@@ -22,6 +24,19 @@ const SettingsPage = () => {
 
   const colors = useContext(Colors)
   const styles = {
+    headers: css`
+      text-align: center;
+      margin-top: 38px;
+      .header {
+        color: ${colors.primary.sage};
+        font-size: 30px;
+      }
+      .subHeader {
+        color: ${colors.others.subHeader};
+        font-size: 20px;
+        margin-bottom: 63px;
+      }
+    `,
     container: css`
       background-color: ${colors.others.bcgSettings};
       height: calc(100vh - 65px);
@@ -31,11 +46,12 @@ const SettingsPage = () => {
       & .categoriesWrapper {
         width: 90%;
         border-radius: 10px;
+        margin-bottom: 70px;
         overflow: hidden;
       }
       & ul {
         width: 100%;
-        background-color: #ffffff;
+        background-color: ${colors.typo.snow};
         & li:not(:last-of-type) {
           border-bottom: 1px solid #f0f3f4;
         }
@@ -51,7 +67,7 @@ const SettingsPage = () => {
         text-transform: uppercase;
         & .index {
           font-size: 0.8rem;
-          color: #87bcbf;
+          color: ${colors.primary.sage};
         }
       }
     `,
@@ -86,8 +102,10 @@ const SettingsPage = () => {
 
   return (
     <div css={styles.container}>
-      <h2>Manage</h2>
-      <p>Categories</p>
+      <div css={styles.headers}>
+        <h2 className="header">Manage</h2>
+        <p className="subHeader">Categories</p>
+      </div>
       <div className="categoriesWrapper">
         <DragDropContext onDragEnd={handleOnDragEnd}>
           <Droppable droppableId="characters">
@@ -136,6 +154,8 @@ const SettingsPage = () => {
           </Droppable>
         </DragDropContext>
       </div>
+      <DarkModeToggle />
+      <VersionNumber />
     </div>
   )
 }

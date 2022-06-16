@@ -51,11 +51,6 @@ function App() {
     },
   ])
 
-  // useEffect
-  // useEffect(() => {
-  //   console.log(categoriesContext)
-  // }, [categoriesContext])
-
   return (
     <NavigationContext.Provider value={{ navContext, setNavContext }}>
       <CategoriesContext.Provider

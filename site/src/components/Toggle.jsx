@@ -1,7 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react"
 
-const Toggle = ({ name, checked, handleClick }) => {
+import { useContext } from "react"
+import ColorsContext from "../contexts/colorsContext"
+
+const Toggle = ({ checked, handleClick }) => {
+  const colors = useContext(ColorsContext)
+
   const styles = {
     switch: css`
       cursor: pointer;
@@ -21,7 +26,7 @@ const Toggle = ({ name, checked, handleClick }) => {
     `,
     slider: css`
       position: absolute;
-      background-color: #ffffff;
+      background-color: ${colors.secondary.ice};
       top: 2px;
       bottom: 2px;
       left: 2px;
@@ -31,14 +36,14 @@ const Toggle = ({ name, checked, handleClick }) => {
       filter: drop-shadow(5px 5px 10px #00000030);
     `,
     switchOn: css`
-      background-color: #87bcbf;
+      background-color: ${colors.primary.sage};
       left: 2px;
       & .slider {
         left: 27px;
       }
     `,
     switchOff: css`
-      background-color: #e0e5e5;
+      background-color: ${colors.others.bcgSettings};
     `,
   }
 

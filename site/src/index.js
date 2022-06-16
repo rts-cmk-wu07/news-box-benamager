@@ -9,8 +9,6 @@ import Router from "./routes/Router"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 
-console.log(`${process.env.REACT_APP_NAME} ${process.env.REACT_APP_VERSION}`)
-
 root.render(
   <Router>
     <App />

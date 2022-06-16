@@ -20,6 +20,7 @@ const ColorsContext = createContext({
   },
   others: {
     bcgSettings: "#ECEFF0",
+    subHeader: "#707070",
   },
 })
 
