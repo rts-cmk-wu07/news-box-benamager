@@ -1,25 +1,22 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react"
 import { useContext } from "react"
-import SwiperButton from "./SwiperButton"
 import ColorsContext from "../contexts/colorsContext"
 
-import {
-  LeadingActions,
-  SwipeableList,
-  SwipeableListItem,
-  SwipeAction,
-  TrailingActions,
-} from "react-swipeable-list"
 import "react-swipeable-list/dist/styles.css"
 
-const CategoryItem = ({ img, header, text }) => {
+import ArchivedContext from "../contexts/archivedContext"
+import { useEffect } from "react"
+
+const CategoryItem = ({ img, header, text, category, handleClick }) => {
   const colors = useContext(ColorsContext)
+  const { archivedContext, setArchivedContext } = useContext(ArchivedContext)
 
   const styles = {
     container: css`
       display: flex;
       align-items: center;
+      //background-color: ${colors.primary.sage};
       gap: 21px;
       height: 100px;
       width: 100%;
@@ -44,39 +41,32 @@ const CategoryItem = ({ img, header, text }) => {
     `,
   }
 
-  //   const leadingActions = () => (
-  //     <LeadingActions>
-  //       <SwipeAction onClick={() => console.info("swipe action triggered")}>
-  //         Action name
-  //       </SwipeAction>
-  //     </LeadingActions>
-  //   )
+  // const leadingActions = () => (
+  //   <LeadingActions>
+  //     <SwipeAction onClick={() => console.info("swipe action triggered")}>
+  //       Action name
+  //     </SwipeAction>
+  //   </LeadingActions>
+  // )
 
-  const trailingActions = () => (
-    <TrailingActions>
-      <SwipeAction
-        destructive={false}
-        onClick={() => console.info("swipe action triggered")}
-      >
-        <SwiperButton
-          iconName="AiOutlineInbox"
-          bcgColor={colors.primary.sage}
-          color={colors.typo.snow}
-        />
-      </SwipeAction>
-    </TrailingActions>
-  )
+  const archivedDataForCategory = archivedContext.find(
+    (item) => item.name === category.toLowerCase()
+  ).data
+
+  const isArchived = archivedDataForCategory.find((item) => item.img === img)
 
   return (
-    <SwipeableListItem trailingActions={trailingActions()}>
-      <article css={styles.container}>
-        <img css={styles.image} src={img} alt={text} />
-        <div css={styles.content}>
-          <h2 className="header">{header}</h2>
-          <p className="text">{text}</p>
-        </div>
-      </article>
-    </SwipeableListItem>
+    <article
+      onClick={handleClick}
+      style={isArchived && { backgroundColor: colors.primary.sage }}
+      css={styles.container}
+    >
+      <img css={styles.image} src={img} alt={text} />
+      <div css={styles.content}>
+        <h2 className="header">{header}</h2>
+        <p className="text">{text}</p>
+      </div>
+    </article>
   )
 }
 

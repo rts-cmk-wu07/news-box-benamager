@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation"
 
 import NavigationContext from "./contexts/navigationContext"
 import CategoriesContext from "./contexts/categoriesContext"
+import ArchivedContext from "./contexts/archivedContext"
 
 function App() {
   const [navContext, setNavContext] = useState({
@@ -16,25 +17,58 @@ function App() {
     linkRight: "/settings",
   })
 
-  const [categoriesContext, setCategoriesContext] = useState([
+  const [archivedContext, setArchivedContext] = useState([
     {
-      name: "Automobiles",
-      checked: true,
+      name: "automobiles",
+      data: [],
       isOpen: false,
     },
     {
-      name: "Business",
+      name: "business",
+      data: [],
+      isOpen: false,
+    },
+    {
+      name: "health",
+      data: [],
+      isOpen: false,
+    },
+    {
+      name: "science",
+      data: [],
+      isOpen: false,
+    },
+    {
+      name: "sports",
+      data: [],
+      isOpen: false,
+    },
+    {
+      name: "technology",
+      data: [],
+      isOpen: false,
+    },
+    {
+      name: "travel",
+      data: [],
+      isOpen: false,
+    },
+  ])
+
+  const [categoriesContext, setCategoriesContext] = useState([
+    {
+      name: "Automobiles",
       checked: false,
       isOpen: false,
     },
     {
-      name: "Health",
+      name: "Business",
       checked: true,
-      isOpen: false,
+      isOpen: true,
     },
     {
-      name: "Politics",
-      checked: true,
+      name: "Health",
+      checked: false,
       isOpen: false,
     },
     {
@@ -44,17 +78,17 @@ function App() {
     },
     {
       name: "Sports",
-      checked: true,
+      checked: false,
       isOpen: false,
     },
     {
       name: "Technology",
-      checked: true,
+      checked: false,
       isOpen: false,
     },
     {
       name: "Travel",
-      checked: true,
+      checked: false,
       isOpen: false,
     },
   ])
@@ -64,18 +98,22 @@ function App() {
       <CategoriesContext.Provider
         value={{ categoriesContext, setCategoriesContext }}
       >
-        <Wrapper maxWidth="375px">
-          <Navigation
-            title={navContext.title}
-            height="65px"
-            iconSize="20px"
-            iconLeft={navContext.iconLeft}
-            iconRight={navContext.iconRight}
-            linkLeft={navContext.linkLeft}
-            linkRight={navContext.linkRight}
-          />
-          <Outlet />
-        </Wrapper>
+        <ArchivedContext.Provider
+          value={{ archivedContext, setArchivedContext }}
+        >
+          <Wrapper maxWidth="375px">
+            <Navigation
+              title={navContext.title}
+              height="65px"
+              iconSize="20px"
+              iconLeft={navContext.iconLeft}
+              iconRight={navContext.iconRight}
+              linkLeft={navContext.linkLeft}
+              linkRight={navContext.linkRight}
+            />
+            <Outlet />
+          </Wrapper>
+        </ArchivedContext.Provider>
       </CategoriesContext.Provider>
     </NavigationContext.Provider>
   )

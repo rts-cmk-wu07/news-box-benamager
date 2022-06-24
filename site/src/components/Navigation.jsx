@@ -46,7 +46,9 @@ const Navigation = (props) => {
           />
         </Link>
       )}
-      <h3 css={styles.header}>{title}</h3>
+      <Link to="/">
+        <h3 css={styles.header}>{title}</h3>
+      </Link>
       {iconRight && (
         <Link to={linkRight}>
           <Icon
